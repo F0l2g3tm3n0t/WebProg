@@ -112,14 +112,22 @@
 	        <!-- Script Change Page Size -->
 	        <script>
                 function newPage() {
-                    document.getElementById("paintarea").style.width=document.getElementById("screen-width").value;
-                    document.getElementById("paintarea").style.height=document.getElementById("screen-height").value;
-                }
+					var width = document.getElementById("screen-width");
+					var height = document.getElementById("screen-height");
+					if( (width.value) == 0 || (height.value) == 0 || (width.value) == '' || (height.value) == ''){
+						alert("Please identify width or height");
+					} else {
+                    document.getElementById("paintarea").style.width = width.value;
+                    document.getElementById("paintarea").style.height = height.value;
+					}
+				}
             </script>
 
 	        <!-- Page Content -->
 	        <div id="page-content-wrapper" >
-	        	<div id="paintarea" style="background-color: white; height: 600px; width: 800;">
+	        	<div id="paintarea" style="background-color: white; height: 600px; width: 800; cursor: pointer;">
+
+				</div>
 	        </div>
 	        <!-- /#page-content-wrapper -->
 
