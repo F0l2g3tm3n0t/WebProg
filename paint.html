@@ -72,8 +72,9 @@
 	                	</div>
 	                	<div class="col-xs-2">
 	                		<center>
-		                		<input style="width:50%"><span><input style="width:50%" /></span></input>
+		                		<input id="screen-width" style="width:50%"><span><input id="screen-height" style="width:50%" /></span></input>
 		                		<label>width</label><label>height</label>
+		                		<br><button class="btn btn-success" onclick="newPage()">ok</button>
 			                </center>		                	
 	                	</div>
 	                </div>
@@ -108,11 +109,17 @@
 	        </div>
 	        <!-- /#sidebar-wrapper -->
 
+	        <!-- Script Change Page Size -->
+	        <script>
+                function newPage() {
+                    document.getElementById("paintarea").style.width=document.getElementById("screen-width").value;
+                    document.getElementById("paintarea").style.height=document.getElementById("screen-height").value;
+                }
+            </script>
+
 	        <!-- Page Content -->
-	        <div id="page-content-wrapper" style="background-color: white; height: 600px; width: 800;">
-	            <div class="container-fluid" align="center" style="font-size:3em;">
-	                Paint Online Draw The Future.
-	            </div>
+	        <div id="page-content-wrapper" >
+	        	<div id="paintarea" style="background-color: white; height: 600px; width: 800;">
 	        </div>
 	        <!-- /#page-content-wrapper -->
 
