@@ -78,9 +78,10 @@
 	                </div>
 	            </div>
 	            <!-- /.navbar-collapse -->
-	        </nav>
+	        </nav><br>
 
 	        <!-- Sidebar -->
+			<!--
 	        <nav class="navbar navbar-inverse" role="navigation">
    <div class="navbar-header">
       <a class="navbar-brand" href="#">TutorialsPoint</a>
@@ -106,6 +107,8 @@
       </ul>
    </div>
 </nav>
+-->
+			<!--
 	        <section id="sidebarSection">
 		        <div id="sidebar-wrapper">
 		            <ul class="sidebar-nav">
@@ -136,7 +139,41 @@
 		            </ul>
 		        </div>
 		    </section>
-
+			-->
+			<section id="sidebarSection">
+		        <div id="sidebar-wrapper" class="dropdown">
+		            <ul class="sidebar-nav">
+						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" style="background-color: #333; color:#9d9d9d; width:250px;">
+							Menu Bar
+						<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="background-color: #333;  width:250px; text-align:center;">
+							<li  role="presentation">
+								<a role="menuitem" tabindex="-1" onclick="homePage()">Home</a>
+							</li>
+							<li  role="presentation">
+								<a role="menuitem" tabindex="-1" onclick="loginPage()">Login</a>
+							</li>
+							<li  role="presentation">
+								<a role="menuitem" tabindex="-1" onclick="registerPage()">Register</a>
+							</li>
+							<li  role="presentation">
+								<a role="menuitem" tabindex="-1" onclick="loadPage()">Load</a>
+							</li>
+							<li  role="presentation">
+								<a role="menuitem" tabindex="-1" onclick="saveAsPage()">Save As</a>
+							</li>
+							<li  role="presentation">
+								<a role="menuitem" tabindex="-1" onclick="previewPage()">Preview</a>
+							</li>
+							<li  role="presentation">
+								<a role="menuitem" tabindex="-1" onclick="printPage()">Print</a>
+							</li>
+						</ul>
+		            </ul>
+		        </div>
+		    </section>
+			
 	        <!-- Hide&Show Section Script -->
 	        <script  type="text/javascript">
 	        	function homePage() {
