@@ -22,9 +22,8 @@
 
 	</head>
 
-	<body>
-		
-		<div id="wrapper" class="">	
+	<body onload="init()">
+		<div id="wrapper">	
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	            <!-- Brand and toggle get grouped for better mobile display -->
 	            <div class="navbar-header">
@@ -64,7 +63,7 @@
 	                	</div>
 	                	<div class="col-xs-2">
 	                		<center>
-				                <input class="color {pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black'}"> <br>
+				                <input class="color {pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black'}" onchange="color()" id="color"><br>
 	                			<label>
 	                				colors
 	                			</label>
@@ -72,64 +71,321 @@
 	                	</div>
 	                	<div class="col-xs-2">
 	                		<center>
-		                		<input id="screen-width" style="width:50%"><span><input id="screen-height" style="width:50%" /></span></input>
+		                		<input id="screen-width" style="width:50%" onkeyup="changeWidth()" value="800"><span><input id="screen-height" style="width:50%" onkeyup="changeHeight()" value="600" /></span></input>
 		                		<label>width</label><label>height</label>
-		                		<br><button class="btn btn-success" onclick="newPage()">ok</button>
 			                </center>		                	
 	                	</div>
 	                </div>
 	            </div>
 	            <!-- /.navbar-collapse -->
 	        </nav>
+
 	        <!-- Sidebar -->
-	        <div id="sidebar-wrapper">
-	            <ul class="sidebar-nav">
-	                <li class="sidebar-brand">
-	                    <a href="#">Menu Bar</a>
-	                </li>
-	                <li>
-	                    <a href="#">Login</a>
-	                </li>
-	                <li>
-	                    <a href="#">Register</a>
-	                </li>
-	                <li>
-	                    <a href="#">Load</a>
-	                </li>
-	                <li>
-	                    <a href="#">Save As</a>
-	                </li>
-	                <li>
-	                    <a href="#">Preview</a>
-	                </li>
-	                <li>
-	                    <a href="#">Print</a>
-	                </li>
-	            </ul>
-	        </div>
-	        <!-- /#sidebar-wrapper -->
+	        <nav class="navbar navbar-inverse" role="navigation">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="#">TutorialsPoint</a>
+   </div>
+   <div>
+      <ul class="nav navbar-nav">
+         <li class="active"><a href="#">iOS</a></li>
+         <li><a href="#">SVN</a></li>
+         <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               Java <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+               <li><a href="#">jmeter</a></li>
+               <li><a href="#">EJB</a></li>
+               <li><a href="#">Jasper Report</a></li>
+               <li class="divider"></li>
+               <li><a href="#">Separated link</a></li>
+               <li class="divider"></li>
+               <li><a href="#">One more separated link</a></li>
+            </ul>
+         </li>
+      </ul>
+   </div>
+</nav>
+	        <section id="sidebarSection">
+		        <div id="sidebar-wrapper">
+		            <ul class="sidebar-nav">
+		                <li class="sidebar-brand">
+		                    <a href="#">Menu Bar</a>
+		                </li>
+		                <li>
+		                    <a onclick="homePage()">Home</a>
+		                </li>
+		                <li>
+		                    <a onclick="loginPage()">Login</a>
+		                </li>
+		                <li>
+		                    <a onclick="registerPage()">Register</a>
+		                </li>
+		                <li>
+		                    <a onclick="loadPage()">Load</a>
+		                </li>
+		                <li>
+		                    <a onclick="saveAsPage()">Save As</a>
+		                </li>
+		                <li>
+		                    <a onclick="previewPage()">Preview</a>
+		                </li>
+		                <li>
+		                    <a onclick="printPage()">Print</a>
+		                </li>
+		            </ul>
+		        </div>
+		    </section>
 
-	        <!-- Script Change Page Size -->
-	        <script>
-                function newPage() {
-					var width = document.getElementById("screen-width");
-					var height = document.getElementById("screen-height");
-					if( (width.value) == 0 || (height.value) == 0 || (width.value) == '' || (height.value) == ''){
-						alert("Please identify width or height");
-					} else {
-                    document.getElementById("paintarea").style.width = width.value;
-                    document.getElementById("paintarea").style.height = height.value;
-					}
+	        <!-- Hide&Show Section Script -->
+	        <script  type="text/javascript">
+	        	function homePage() {
+	        		document.getElementById("loginSection").style.display = "none";
+	        		document.getElementById("paintSection").style.display = "block";
+	        		document.getElementById("registerSection").style.display = "none";
+	        	}
+	        
+	        	function loginPage() {
+	        		document.getElementById("loginSection").style.display = "block";
+	        		document.getElementById("paintSection").style.display = "none";
+	        		document.getElementById("registerSection").style.display = "none";
+	        	}
+	        
+	        	function registerPage() {
+	        		document.getElementById("loginSection").style.display = "none";
+	        		document.getElementById("paintSection").style.display = "none";
+	        		document.getElementById("registerSection").style.display = "block";
+	        	}
+	        </script>
+	        <!-- Paint Section -->
+	        <section id="paintSection">
+		        <!-- Script Change Page Size -->
+		        <script>
+		        	function changeWidth() {
+		        		var width = document.getElementById("screen-width");
+		        		if((width.value) == 0 || (width.value) == '') {
+		        			alert("Please check your input.");
+		        		} else {
+		        			document.getElementById("paintarea").style.width = width.value;
+		        		}
+		        	}
+		        	function changeHeight() {
+		        		var height = document.getElementById("screen-height");
+		        		if((height.value) == 0 || (height.value) == '') {
+		        			alert("Please check your input.");
+		        		} else {
+		        			document.getElementById("paintarea").style.height = height.value;
+		        		}
+		        	}
+	            </script>
+	            <!-- Script Paint -->
+	            <script type="text/javascript">
+				var canvas, ctx, flag = false,
+				    prevX = 0,
+				    currX = 0,
+				    prevY = 0,
+				    currY = 0,
+				    dot_flag = false;
+
+				var x = "black",
+				    y = 2;
+
+				function init() {
+				    canvas = document.getElementById('can');
+				    ctx = canvas.getContext("2d");
+				    w = canvas.width;
+				    h = canvas.height;
+
+				    canvas.addEventListener("mousemove", function (e) {
+				        findxy('move', e)
+				    }, false);
+				    canvas.addEventListener("mousedown", function (e) {
+				        findxy('down', e)
+				    }, false);
+				    canvas.addEventListener("mouseup", function (e) {
+				        findxy('up', e)
+				    }, false);
+				    canvas.addEventListener("mouseout", function (e) {
+				        findxy('out', e)
+				    }, false);
 				}
-            </script>
 
-	        <!-- Page Content -->
-	        <div id="page-content-wrapper" >
-	        	<div id="paintarea" style="background-color: white; height: 600px; width: 800; cursor: pointer;">
+				function color(obj) {
+				    x="#" + color.value;
+				}
 
-				</div>
-	        </div>
-	        <!-- /#page-content-wrapper -->
+				function draw() {
+				    ctx.beginPath();
+				    ctx.moveTo(prevX, prevY);
+				    ctx.lineTo(currX, currY);
+				    ctx.strokeStyle = x;
+				    ctx.lineWidth = y;
+				    ctx.stroke();
+				    ctx.closePath();
+				}
+
+				function erase() {
+				    var m = confirm("Want to clear");
+				    if (m) {
+				        ctx.clearRect(0, 0, w, h);
+				        document.getElementById("canvasimg").style.display = "none";
+				    }
+				}
+
+				function save() {
+				    document.getElementById("canvasimg").style.border = "2px solid";
+				    var dataURL = canvas.toDataURL();
+				    document.getElementById("canvasimg").src = dataURL;
+				    document.getElementById("canvasimg").style.display = "inline";
+				}
+
+				function findxy(res, e) {
+				    if (res == 'down') {
+				        prevX = currX;
+				        prevY = currY;
+				        currX = e.clientX - canvas.offsetLeft;
+				        currY = e.clientY - canvas.offsetTop - 53;
+
+				        flag = true;
+				        dot_flag = true;
+				        if (dot_flag) {
+				            ctx.beginPath();
+				            ctx.fillStyle = x;
+				            ctx.fillRect(currX, currY, 2, 2);
+				            ctx.closePath();
+				            dot_flag = false;
+				        }
+				    }
+				    if (res == 'up' || res == "out") {
+				        flag = false;
+				    }
+				    if (res == 'move') {
+				        if (flag) {
+				            prevX = currX;
+				            prevY = currY;
+				            currX = e.clientX - canvas.offsetLeft;
+				            currY = e.clientY - canvas.offsetTop - 53;
+				            draw();
+				        }
+				    }
+				}
+				</script>
+
+		        <!-- Page Content Canvas -->
+		        <div id="page-content-wrapper" >
+		        	<canvas id="paintarea" style="background-color: white; position:absolute; height: 600px; width: 800; display:none"></canvas>
+		        	<canvas id="can" width="400" height="400" style="position:absolute;top:10%;left:10%;border:2px solid;"></canvas>
+		        </div>
+		        
+
+		    </section>
+
+		    <!-- Login Section -->
+		    <section id="loginSection" style="display:none;">
+		    	<!-- login container -->
+		        <div class="container">
+		            <div class="row">
+		                <div class="col-lg-12 text-center">
+		                    <h2 class="section-heading">Sign In</h2>
+		                    <h3 class="section-subheading text-muted">Please fill your information below.</h3>
+		                </div>
+		            </div>
+		            <div class="row">
+		                <div class="col-lg-12">
+		                    <form name="sentMessage" id="contactForm" novalidate>
+		                        <div class="row">
+	                                <div class="col-xs-3 col-centered"></div>
+	                                    <div class="col-xs-6 col-centered">
+	                                        <div class="input-group input-group-lg">
+	                                            <span class="input-group-addon">Username</span>
+	                                            <input type="text" class="form-control" placeholder="Your Username *" id="username" required data-validation-required-message="Please enter your username.">
+	                                            <p class="help-block text-danger"></p>
+	                                        </div><br>
+	                                        <div class="input-group input-group-lg">
+	                                            <span class="input-group-addon">Password</span>
+	                                            <input type="password" class="form-control" placeholder="Your Password *" id="password" required data-validation-required-message="Please enter your password.">
+	                                            <p class="help-block text-danger"></p>
+	                                        </div>
+
+	                                        <span style="margin-top: 10px;  float: right;">
+
+	                                        </span>
+	                                        <div class="col-xs-2 col-centered"></div>
+                                    	</div>
+		                            <div class="clearfix"></div>
+		                            <!--<br>-->
+		                            <div class="col-lg-12 text-center">
+		                                <div id="signin">                                
+		                                    <div type="" class="login btn btn-xl btn-info" style="background-color:#7D7D7D; border-color:#7D7D7D;">Sign In</div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </form>
+		                </div>
+		            </div>
+		        </div>
+		    </section>
+
+		    <!-- Register Section -->
+		    <section id="registerSection" style="display:none;">
+		    	<div class="container">
+		    		 <div class="row">
+		                <div class="col-lg-12 text-center">
+		                    <h2 class="section-heading">Registration</h2>
+		                    <h3 class="section-subheading text-muted">Please fill your information below.</h3>
+		                </div>
+		            </div>
+		            <div class="row">
+		            	<div class="col-xs-3"></div>
+		            	<div class="col-xs-6">
+		            		<div class="form-group">
+                                <script>
+                                    function loadPic() {
+                                        document.getElementById("pics").src=document.getElementById("toolPictureURL").value;
+                                    }
+                                </script>
+                                <center>
+                                    <img class="centerImage" align="center" heigt="200" width="200" id="pics" src="images/icons/tool.jpg"><br><br>
+                                </center>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-addon">PictureURL</span>
+                                    <input type="text" class="input-sm form-control inputSize" value="" placeholder="upload pictureurl" id="toolPictureURL" onkeyup="loadPic()">
+                                </div>
+                            </div>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">Firstname</span>
+                                <input type="text" class="form-control" placeholder="Your Firstname *" id="firstname" required data-validation-required-message="Please enter your firstname.">
+                                    <p class="help-block text-danger"></p>
+                            </div><br>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">Surname</span>
+                                <input type="text" class="form-control" placeholder="Your Surname *" id="surname" required data-validation-required-message="Please enter your surname.">
+                                    <p class="help-block text-danger"></p>
+                            </div><br>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">E-mail</span>
+                                <input type="text" class="form-control" placeholder="Your E-mail *" id="email" required data-validation-required-message="Please enter your e-mail.">
+                                    <p class="help-block text-danger"></p>
+                            </div><br>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">Username</span>
+                                <input type="text" class="form-control" placeholder="Your Username *" id="username" required data-validation-required-message="Please enter your username.">
+                                    <p class="help-block text-danger"></p>
+                            </div><br>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">Password</span>
+                                <input type="password" class="form-control" placeholder="Your Password *" id="password" required data-validation-required-message="Please enter your password.">
+                                    <p class="help-block text-danger"></p>
+                            </div><br>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">Re-Password</span>
+                                <input type="password" class="form-control" placeholder="Your Re-Password *" id="repassword" required data-validation-required-message="Please enter your repassword.">
+                                    <p class="help-block text-danger"></p>
+                            </div><br>
+		            	</div>
+		            </div>
+		    	</div>
+		    </section>
 
 	    </div>
     <!-- /#wrapper -->
@@ -141,7 +397,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="startbootstrap/js/bootstrap.min.js"></script>
 
-    <!-- -->
+    <!-- Optional JavaScript-->
 	<script type="text/javascript" src="startbootstrap/js/jscolor/jscolor.js"></script>
 
     <script>
@@ -150,6 +406,7 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
+
 
 </body>
 </html>
