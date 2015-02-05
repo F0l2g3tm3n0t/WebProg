@@ -23,13 +23,36 @@
 	</head>
 
 	<body onload="init()">
-		<div id="wrapper">	
+		<div id="wrapper" style="padding-left: 0px;">	
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	            <!-- Brand and toggle get grouped for better mobile display -->
 	            <div class="navbar-header">
-	                <div class="container">
+	                <div class="container" id="topbar">
 	                	<div class="col-xs-2">
-	                		 <a class="navbar-brand" id="menu-toggle">Paint Online</a>
+	                		 <a class="navbar-brand" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Paint Online<span class="caret"></a>
+	                		 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="background-color: #333;  width:250px; text-align:center;">
+										<li role="presentation">
+											<a style="color: #BFBFBF;" role="menuitem" tabindex="-1" onclick="homePage()">Home</a>
+										</li>
+										<li  role="presentation">
+											<a style="color: #BFBFBF;" role="menuitem" tabindex="-1" onclick="loginPage()">Login</a>
+										</li>
+										<li  role="presentation">
+											<a style="color: #BFBFBF;" role="menuitem" tabindex="-1" onclick="registerPage()">Register</a>
+										</li>
+										<li  role="presentation">
+											<a style="color: #BFBFBF;" role="menuitem" tabindex="-1" onclick="loadPage()">Load</a>
+										</li>
+										<li  role="presentation">
+											<a style="color: #BFBFBF;" role="menuitem" tabindex="-1" onclick="saveAsPage()">Save As</a>
+										</li>
+										<li  role="presentation">
+											<a style="color: #BFBFBF;" role="menuitem" tabindex="-1" onclick="previewPage()">Preview</a>
+										</li>
+										<li  role="presentation">
+											<a style="color: #BFBFBF;" role="menuitem" tabindex="-1" onclick="printPage()">Print</a>
+										</li>
+									</ul>
 	                	</div>
 	                	<div class="col-xs-4">
 	                		<center>
@@ -71,7 +94,7 @@
 	                	</div>
 	                	<div class="col-xs-2">
 	                		<center>
-		                		<input id="screen-width" style="width:50%" onkeyup="changeWidth()" value="800"><span><input id="screen-height" style="width:50%" onkeyup="changeHeight()" value="600" /></span></input>
+		                		<input id="screen-width" style="width:50%" onkeyup="changeWidth()" value="400"><span><input id="screen-height" style="width:50%" onkeyup="changeHeight()" value="400" /></span></input>
 		                		<label>width</label><label>height</label>
 			                </center>		                	
 	                	</div>
@@ -80,241 +103,13 @@
 	            <!-- /.navbar-collapse -->
 	        </nav><br>
 
-	        <!-- Sidebar -->
-			<!--
-	        <nav class="navbar navbar-inverse" role="navigation">
-   <div class="navbar-header">
-      <a class="navbar-brand" href="#">TutorialsPoint</a>
-   </div>
-   <div>
-      <ul class="nav navbar-nav">
-         <li class="active"><a href="#">iOS</a></li>
-         <li><a href="#">SVN</a></li>
-         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               Java <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-               <li><a href="#">jmeter</a></li>
-               <li><a href="#">EJB</a></li>
-               <li><a href="#">Jasper Report</a></li>
-               <li class="divider"></li>
-               <li><a href="#">Separated link</a></li>
-               <li class="divider"></li>
-               <li><a href="#">One more separated link</a></li>
-            </ul>
-         </li>
-      </ul>
-   </div>
-</nav>
--->
-			<!--
-	        <section id="sidebarSection">
-		        <div id="sidebar-wrapper">
-		            <ul class="sidebar-nav">
-		                <li class="sidebar-brand">
-		                    <a href="#">Menu Bar</a>
-		                </li>
-		                <li>
-		                    <a onclick="homePage()">Home</a>
-		                </li>
-		                <li>
-		                    <a onclick="loginPage()">Login</a>
-		                </li>
-		                <li>
-		                    <a onclick="registerPage()">Register</a>
-		                </li>
-		                <li>
-		                    <a onclick="loadPage()">Load</a>
-		                </li>
-		                <li>
-		                    <a onclick="saveAsPage()">Save As</a>
-		                </li>
-		                <li>
-		                    <a onclick="previewPage()">Preview</a>
-		                </li>
-		                <li>
-		                    <a onclick="printPage()">Print</a>
-		                </li>
-		            </ul>
-		        </div>
-		    </section>
-			-->
-			<section id="sidebarSection">
-		        <div id="sidebar-wrapper" class="dropdown">
-		            <ul class="sidebar-nav">
-						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" style="background-color: #333; color:#9d9d9d; width:250px;">
-							Menu Bar
-						<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="background-color: #333;  width:250px; text-align:center;">
-							<li  role="presentation">
-								<a role="menuitem" tabindex="-1" onclick="homePage()">Home</a>
-							</li>
-							<li  role="presentation">
-								<a role="menuitem" tabindex="-1" onclick="loginPage()">Login</a>
-							</li>
-							<li  role="presentation">
-								<a role="menuitem" tabindex="-1" onclick="registerPage()">Register</a>
-							</li>
-							<li  role="presentation">
-								<a role="menuitem" tabindex="-1" onclick="loadPage()">Load</a>
-							</li>
-							<li  role="presentation">
-								<a role="menuitem" tabindex="-1" onclick="saveAsPage()">Save As</a>
-							</li>
-							<li  role="presentation">
-								<a role="menuitem" tabindex="-1" onclick="previewPage()">Preview</a>
-							</li>
-							<li  role="presentation">
-								<a role="menuitem" tabindex="-1" onclick="printPage()">Print</a>
-							</li>
-						</ul>
-		            </ul>
-		        </div>
-		    </section>
-			
-	        <!-- Hide&Show Section Script -->
-	        <script  type="text/javascript">
-	        	function homePage() {
-	        		document.getElementById("loginSection").style.display = "none";
-	        		document.getElementById("paintSection").style.display = "block";
-	        		document.getElementById("registerSection").style.display = "none";
-	        	}
-	        
-	        	function loginPage() {
-	        		document.getElementById("loginSection").style.display = "block";
-	        		document.getElementById("paintSection").style.display = "none";
-	        		document.getElementById("registerSection").style.display = "none";
-	        	}
-	        
-	        	function registerPage() {
-	        		document.getElementById("loginSection").style.display = "none";
-	        		document.getElementById("paintSection").style.display = "none";
-	        		document.getElementById("registerSection").style.display = "block";
-	        	}
-	        </script>
 	        <!-- Paint Section -->
 	        <section id="paintSection">
-		        <!-- Script Change Page Size -->
-		        <script>
-		        	function changeWidth() {
-		        		var width = document.getElementById("screen-width");
-		        		if((width.value) == 0 || (width.value) == '') {
-		        			alert("Please check your input.");
-		        		} else {
-		        			document.getElementById("paintarea").style.width = width.value;
-		        		}
-		        	}
-		        	function changeHeight() {
-		        		var height = document.getElementById("screen-height");
-		        		if((height.value) == 0 || (height.value) == '') {
-		        			alert("Please check your input.");
-		        		} else {
-		        			document.getElementById("paintarea").style.height = height.value;
-		        		}
-		        	}
-	            </script>
-	            <!-- Script Paint -->
-	            <script type="text/javascript">
-				var canvas, ctx, flag = false,
-				    prevX = 0,
-				    currX = 0,
-				    prevY = 0,
-				    currY = 0,
-				    dot_flag = false;
-
-				var x = "black",
-				    y = 2;
-
-				function init() {
-				    canvas = document.getElementById('can');
-				    ctx = canvas.getContext("2d");
-				    w = canvas.width;
-				    h = canvas.height;
-
-				    canvas.addEventListener("mousemove", function (e) {
-				        findxy('move', e)
-				    }, false);
-				    canvas.addEventListener("mousedown", function (e) {
-				        findxy('down', e)
-				    }, false);
-				    canvas.addEventListener("mouseup", function (e) {
-				        findxy('up', e)
-				    }, false);
-				    canvas.addEventListener("mouseout", function (e) {
-				        findxy('out', e)
-				    }, false);
-				}
-
-				function color(obj) {
-				    x="#" + color.value;
-				}
-
-				function draw() {
-				    ctx.beginPath();
-				    ctx.moveTo(prevX, prevY);
-				    ctx.lineTo(currX, currY);
-				    ctx.strokeStyle = x;
-				    ctx.lineWidth = y;
-				    ctx.stroke();
-				    ctx.closePath();
-				}
-
-				function erase() {
-				    var m = confirm("Want to clear");
-				    if (m) {
-				        ctx.clearRect(0, 0, w, h);
-				        document.getElementById("canvasimg").style.display = "none";
-				    }
-				}
-
-				function save() {
-				    document.getElementById("canvasimg").style.border = "2px solid";
-				    var dataURL = canvas.toDataURL();
-				    document.getElementById("canvasimg").src = dataURL;
-				    document.getElementById("canvasimg").style.display = "inline";
-				}
-
-				function findxy(res, e) {
-				    if (res == 'down') {
-				        prevX = currX;
-				        prevY = currY;
-				        currX = e.clientX - canvas.offsetLeft;
-				        currY = e.clientY - canvas.offsetTop - 53;
-
-				        flag = true;
-				        dot_flag = true;
-				        if (dot_flag) {
-				            ctx.beginPath();
-				            ctx.fillStyle = x;
-				            ctx.fillRect(currX, currY, 2, 2);
-				            ctx.closePath();
-				            dot_flag = false;
-				        }
-				    }
-				    if (res == 'up' || res == "out") {
-				        flag = false;
-				    }
-				    if (res == 'move') {
-				        if (flag) {
-				            prevX = currX;
-				            prevY = currY;
-				            currX = e.clientX - canvas.offsetLeft;
-				            currY = e.clientY - canvas.offsetTop - 53;
-				            draw();
-				        }
-				    }
-				}
-				</script>
-
 		        <!-- Page Content Canvas -->
 		        <div id="page-content-wrapper" >
 		        	<canvas id="paintarea" style="background-color: white; position:absolute; height: 600px; width: 800; display:none"></canvas>
-		        	<canvas id="can" width="400" height="400" style="position:absolute;top:10%;left:10%;border:2px solid;"></canvas>
+		        	<canvas id="can" width="400" height="400" style="background-color: white; "></canvas>
 		        </div>
-		        
-
 		    </section>
 
 		    <!-- Login Section -->
@@ -437,13 +232,133 @@
     <!-- Optional JavaScript-->
 	<script type="text/javascript" src="startbootstrap/js/jscolor/jscolor.js"></script>
 
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+	<!-- javascript -->
+        <script  type="text/javascript">
+        	// Hide&Show Section Script
+        	function homePage() {
+        		document.getElementById("loginSection").style.display = "none";
+        		document.getElementById("paintSection").style.display = "block";
+        		document.getElementById("registerSection").style.display = "none";
+        	}
+        
+        	function loginPage() {
+        		document.getElementById("loginSection").style.display = "block";
+        		document.getElementById("paintSection").style.display = "none";
+        		document.getElementById("registerSection").style.display = "none";
+        	}
+        
+        	function registerPage() {
+        		document.getElementById("loginSection").style.display = "none";
+        		document.getElementById("paintSection").style.display = "none";
+        		document.getElementById("registerSection").style.display = "block";
+        	}
+        	// Script Change Page Size
+        	function changeWidth() {
+        		var width = document.getElementById("screen-width");
+        		if((width.value) == 0 || (width.value) == '') {
+        			alert("Please check your input.");
+        		} else {
+        			document.getElementById("can").style.width = width.value;
+        		}
+        	}
+        	function changeHeight() {
+        		var height = document.getElementById("screen-height");
+        		if((height.value) == 0 || (height.value) == '') {
+        			alert("Please check your input.");
+        		} else {
+        			document.getElementById("can").style.height = height.value;
+        		}
+        	}
+	        // Script Paint
+			var canvas, ctx, flag = false,
+			    prevX = 0,
+			    currX = 0,
+			    prevY = 0,
+			    currY = 0,
+			    dot_flag = false;
 
+			var x = "black",
+			    y = 2;
 
+			function init() {
+			    canvas = document.getElementById('can');
+			    ctx = canvas.getContext("2d");
+			    w = canvas.width;
+			    h = canvas.height;
+
+			    canvas.addEventListener("mousemove", function (e) {
+			        findxy('move', e)
+			    }, false);
+			    canvas.addEventListener("mousedown", function (e) {
+			        findxy('down', e)
+			    }, false);
+			    canvas.addEventListener("mouseup", function (e) {
+			        findxy('up', e)
+			    }, false);
+			    canvas.addEventListener("mouseout", function (e) {
+			        findxy('out', e)
+			    }, false);
+			}
+
+			function color(obj) {
+			    x="#" + color.value;
+			}
+
+			function draw() {
+			    ctx.beginPath();
+			    ctx.moveTo(prevX, prevY);
+			    ctx.lineTo(currX, currY);
+			    ctx.strokeStyle = x;
+			    ctx.lineWidth = y;
+			    ctx.stroke();
+			    ctx.closePath();
+			}
+
+			function erase() {
+			    var m = confirm("Want to clear");
+			    if (m) {
+			        ctx.clearRect(0, 0, w, h);
+			        document.getElementById("canvasimg").style.display = "none";
+			    }
+			}
+
+			function save() {
+			    document.getElementById("canvasimg").style.border = "2px solid";
+			    var dataURL = canvas.toDataURL();
+			    document.getElementById("canvasimg").src = dataURL;
+			    document.getElementById("canvasimg").style.display = "inline";
+			}
+
+			function findxy(res, e) {
+			    if (res == 'down') {
+			        prevX = currX;
+			        prevY = currY;
+			        currX = e.clientX - canvas.offsetLeft;
+			        currY = e.clientY - canvas.offsetTop - document.getElementById("topbar").offsetHeight  - 18;
+
+			        flag = true;
+			        dot_flag = true;
+			        if (dot_flag) {
+			            ctx.beginPath();
+			            ctx.fillStyle = x;
+			            ctx.fillRect(currX, currY, 2, 2);
+			            ctx.closePath();
+			            dot_flag = false;
+			        }
+			    }
+			    if (res == 'up' || res == "out") {
+			        flag = false;
+			    }
+			    if (res == 'move') {
+			        if (flag) {
+			            prevX = currX;
+			            prevY = currY;
+			            currX = e.clientX - canvas.offsetLeft;
+			            currY = e.clientY - canvas.offsetTop - document.getElementById("topbar").offsetHeight  - 18;
+			            draw();
+			        }
+			    }
+			}
+		</script>
 </body>
 </html>
