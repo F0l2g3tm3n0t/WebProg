@@ -1,0 +1,37 @@
+<html>
+<head>
+  <title></title>
+  <script language="javascript">
+      function newBackgroundColor(color) {
+          document.bgColor = color;
+          var a = document.getElementById("t1");
+          a.value = color;
+      }
+      function processdata(c2) {
+          var a = document.getElementById(c2).value;
+          var ab = document.getElementById("h");
+          ab.style.color = a;
+      }
+  </script>
+   <style type="text/css">
+        #color2
+        {
+            width: 465px;
+        }
+        #color1
+        {
+            width: 464px;
+        }
+    </style>
+</head>
+<body>
+  <h1 id="h" style="color: #00FFFF">HTML 5 Color Picker Demonstrated</h1>
+  <input type="color" name="color2" id="color2" /> <input id="Button1" type="button" value="Change Label Color" onclick="processdata('color2')"/>   <br />
+   <p>Select Background Color
+   <input name="colorpicker" id="color1" type="color" onchange="newBackgroundColor(colorpicker.value);">
+   </p>
+   Selected Color is:
+   <input name="selectedcolor" id="t1" type="text">
+   </p>
+</body>
+</html>

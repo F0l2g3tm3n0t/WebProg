@@ -19,7 +19,6 @@
 	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	    <![endif]-->
-
 	</head>
 
 	<body onload="init()">
@@ -57,13 +56,13 @@
 	                	<div class="col-xs-4">
 	                		<center>
 	                			<div class="btn-group" role="group" aria-label="...">
-									<button type="button" class="btn btn-default fa fa-pencil" title="Pencil"/>
-									<button type="button" class="btn btn-default fa fa-trash" title="Fill with color"/>
-									<button type="button" class="btn btn-default fa fa-font" title="Text"/>
-									<button type="button" class="btn btn-default fa fa-eraser" title="Eraser"/>
-									<button type="button" class="btn btn-default fa fa-eyedropper" title="Color picker"/>
-									<button type="button" class="btn btn-default fa fa-search" title="Zoom"/>
-									<button type="button" class="btn btn-default fa fa-paint-brush" title="Brush"/>
+									<button type="button" onclick="tools(this)" id="pencil" class="btn btn-default fa fa-pencil" title="Pencil"/>
+									<button type="button" onclick="tools(this)" id="fill" class="btn btn-default fa fa-trash" title="Fill with color"/>
+									<button type="button" onclick="tools(this)" id="text" class="btn btn-default fa fa-font" title="Text"/>
+									<button type="button" onclick="tools(this)" id="eraser" class="btn btn-default fa fa-eraser" title="Eraser"/>
+									<button type="button" onclick="tools(this)" id="colorpicker" class="btn btn-default fa fa-eyedropper" title="Color picker"/>
+									<!-- <button type="button" id="zoom" onClick="tools()" class="btn btn-default fa fa-search" title="Zoom"/> -->
+									<button type="button" onclick="tools(this)" id="brush" class="btn btn-default fa fa-paint-brush" title="Brush"/>
 								</div>
 								<br>
 	                			<label>
@@ -86,7 +85,8 @@
 	                	</div>
 	                	<div class="col-xs-2">
 	                		<center>
-				                <input class="color {pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black'}" onchange="color()" id="color"><br>
+				                <input class="color {pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black'}" name="colorpicker" onchange="color(colorpicker.value);" id="colorpicker"><br>
+				               	<!-- <input type="color" id="coloring" name="colorpicker" onchange="color(colorpicker.value);" /><br> -->
 	                			<label>
 	                				colors
 	                			</label>
@@ -107,7 +107,7 @@
 	        <section id="paintSection">
 		        <!-- Page Content Canvas -->
 		        <div id="page-content-wrapper" >
-		        	<canvas id="paintarea" style="background-color: white; position:absolute; height: 600px; width: 800; display:none"></canvas>
+		        	<!-- <canvas id="paintarea" style="background-color: white; position:absolute; height: 600px; width: 800; display:none"></canvas> -->
 		        	<canvas id="can" width="400" height="400" style="background-color: white; "></canvas>
 		        </div>
 		    </section>
@@ -171,18 +171,13 @@
 		            	<div class="col-xs-3"></div>
 		            	<div class="col-xs-6">
 		            		<div class="form-group">
-                                <script>
-                                    function loadPic() {
-                                        document.getElementById("pics").src=document.getElementById("toolPictureURL").value;
-                                    }
-                                </script>
-                                <center>
-                                    <img class="centerImage" align="center" heigt="200" width="200" id="pics" src="images/icons/tool.jpg"><br><br>
-                                </center>
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-addon">PictureURL</span>
-                                    <input type="text" class="input-sm form-control inputSize" value="" placeholder="upload pictureurl" id="toolPictureURL" onkeyup="loadPic()">
-                                </div>
+	                            <center>
+	                                <img class="centerImage" align="center" heigt="200" width="200" id="pics" src="images/icons/tool.jpg"><br><br>
+	                            </center>
+	                            <div class="input-group input-group-lg">
+	                                <span class="input-group-addon">PictureURL</span>
+	                                <input type="text" class="input-sm form-control inputSize" value="" placeholder="upload pictureurl" id="toolPictureURL" onkeyup="loadPic()">
+	                            </div>
                             </div>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon">Firstname</span>
@@ -234,6 +229,11 @@
 
 	<!-- javascript -->
         <script  type="text/javascript">
+        	//Load Picture Auto
+            function loadPic() {
+                document.getElementById("pics").src=document.getElementById("toolPictureURL").value;
+            }
+            
         	// Hide&Show Section Script
         	function homePage() {
         		document.getElementById("loginSection").style.display = "none";
@@ -280,6 +280,8 @@
 			var x = "black",
 			    y = 2;
 
+			var tool = "pencil";
+
 			function init() {
 			    canvas = document.getElementById('can');
 			    ctx = canvas.getContext("2d");
@@ -300,8 +302,28 @@
 			    }, false);
 			}
 
-			function color(obj) {
-			    x="#" + color.value;
+			// function tools(obj) {
+			// 	switch (obj.id) {
+			// 		case "pencil":
+			// 			tool = "pencil";
+			// 			break;
+			// 		case "fill":
+			// 			tool = "fill";
+			// 			break;
+			// 		case "text":
+			// 			tool = "text";
+			// 			break;
+			// 		case "colorpicker":
+			// 			tool = "colorpicker";
+			// 			break;
+			// 		case "brush"
+			// 			tool = "brush";
+			// 			break;
+			//  }
+			// }
+
+			function color(colors) {
+			    x="#".concat(colors);
 			}
 
 			function draw() {
